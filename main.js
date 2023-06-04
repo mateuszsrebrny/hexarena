@@ -29,11 +29,11 @@ let sphereMesh = new THREE.Mesh(
 scene.add(sphereMesh);
 
 
-//const controls = new OrbitControls(camera, renderer.domElement);
+const controls = new OrbitControls(camera, renderer.domElement);
 
 (async function() {
   renderer.setAnimationLoop(() => {
-    //controls.update();
+    controls.update();
     renderer.render(scene, camera);
   });
 })();
