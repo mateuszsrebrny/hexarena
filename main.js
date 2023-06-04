@@ -15,12 +15,12 @@ renderer.setSize(window.innerWidth, window.innerHeight);
 document.body.appendChild(renderer.domElement);
 
 const textureLoader = new THREE.TextureLoader();
-const myTexture = textureLoader.load("/my-texture.jpeg");
+const swanTexture = textureLoader.load("/swan.png");
 
 const geometry = new THREE.BoxGeometry(1, 1, 1);
 const material = new THREE.MeshBasicMaterial({
   color: 0xffffff,
-  map: myTexture,
+  map: swanTexture,
 });
 const cube = new THREE.Mesh(geometry, material);
 scene.add(cube);
