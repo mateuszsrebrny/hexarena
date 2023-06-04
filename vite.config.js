@@ -1,5 +1,5 @@
-export default defineConfig({
+export default {
   server: {
     open: '/index.html',
   },
-})
+}
