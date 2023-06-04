@@ -18,28 +18,19 @@ renderer.physicallyCorrectLights = true;
 
 document.body.appendChild(renderer.domElement);
 
-const textureLoader = new THREE.TextureLoader();
-const swanTexture = textureLoader.load("/swan.png");
+let sphereMesh = new THREE.Mesh(
+  new THREE.SphereGeometry(5, 10, 10),
+  new THREE.MeshBasicMaterial({ color: 0xff0000 })
+);
+scene.add(sphereMesh);
 
-const geometry = new THREE.BoxGeometry(1, 1, 1);
-const material = new THREE.MeshBasicMaterial({
-  color: 0xffffff,
-  map: swanTexture,
-});
-const cube = new THREE.Mesh(geometry, material);
-scene.add(cube);
+//camera.position.z = 1.5;
 
-camera.position.z = 1.5;
+//const controls = new OrbitControls(camera, renderer.domElement);
 
-const controls = new OrbitControls(camera, renderer.domElement);
-
-function animate() {
-  requestAnimationFrame(animate);
-  controls.update();
-
-  //cube.rotation.x += 0.01;
-  cube.rotation.y += 0.01;
-
-  renderer.render(scene, camera);
-}
-animate();
+(async function() {
+  renderer.setAnimationLoop(() => {
+    //controls.update();
+    renderer.render(scene, camera);
+  });
+})();
