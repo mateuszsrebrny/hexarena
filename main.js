@@ -54,7 +54,11 @@ controls.enableDamping = true;
 
   envmap = pmrem.fromEquirectangular(envmapTexture).texture;
   
-  makeHex(3, new Vector2(0, 0));
+  for (let i = -5; i <= 5; ++i) {
+    for (let j = -5; j <= 5; ++j) {
+      makeHex(3, new Vector2(i, j));
+    }
+  }
 
   let hexagonMesh = new Mesh(
     hexagonGeometries,
