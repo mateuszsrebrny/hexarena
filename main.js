@@ -56,7 +56,7 @@ controls.enableDamping = true;
   
   for (let i = -5; i <= 5; ++i) {
     for (let j = -5; j <= 5; ++j) {
-      makeHex(3, new Vector2(i, j));
+      makeHex(3, tileToPosition(i, j));
     }
   }
 
@@ -75,6 +75,10 @@ controls.enableDamping = true;
     renderer.render(scene, camera);
   });
 })();
+
+function tileToPosition(tileX, tileY) {
+  return new Vector2((tileX + (tileY % 2) * 0.5), tileY * 1.535);
+}
 
 let hexagonGeometries = new BoxGeometry(0, 0, 0);
 
