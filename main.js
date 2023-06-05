@@ -1,12 +1,27 @@
 import "./style.css";
-import * as THREE from "three";
-import { OrbitControls } from "three/examples/jsm/controls/OrbitControls.js";
+
+import {
+  Scene,
+  Color,
+  PerspectiveCamera,
+  WebGLRenderer,
+  ACESFilmicToneMapping,
+  sRGBEncoding,
+  PMREMGenerator,
+  FloatType,
+  Mesh,
+  SphereGeometry,
+  MeshStandardMaterial,
+} from "three";
+
+import { OrbitControls } from "three/examples/jsm/controls/OrbitControls";
 import { RGBELoader } from "three/examples/jsm/loaders/RGBELoader";
+import { mergeBufferGeometries } from "three/examples/jsm/utils/BufferGeometriesUtils";
 
-const scene = new THREE.Scene();
-scene.background = new THREE.Color("#FFEECC");
+const scene = new Scene();
+scene.background = new Color("#FFEECC");
 
-const camera = new THREE.PerspectiveCamera(
+const camera = new PerspectiveCamera(
   45,
   window.innerWidth / window.innerHeight,
   0.1,
@@ -14,10 +29,10 @@ const camera = new THREE.PerspectiveCamera(
 );
 camera.position.set(0, 0, 50);
 
-const renderer = new THREE.WebGLRenderer({ antialias: true });
+const renderer = new WebGLRenderer({ antialias: true });
 renderer.setSize(window.innerWidth, window.innerHeight);
-renderer.toneMapping = THREE.ACESFilmicToneMapping;
-renderer.outputEncoding = THREE.sRGBEncoding;
+renderer.toneMapping = ACESFilmicToneMapping;
+renderer.outputEncoding = sRGBEncoding;
 renderer.physicallyCorrectLights = true;
 
 document.body.appendChild(renderer.domElement);
@@ -27,15 +42,15 @@ let envmap;
 const controls = new OrbitControls(camera, renderer.domElement);
 
 (async function() {
-  let pmrem = new THREE.PMREMGenerator(renderer);
-  //let envmapTexture = await new RGBELoader().setDataType(THREE.FloatType).loadAsync("limpopo_golf_course_4k.hdr");
-  let envmapTexture = await new RGBELoader().setDataType(THREE.FloatType).loadAsync("envmap.hdr");
+  let pmrem = new PMREMGenerator(renderer);
+  //let envmapTexture = await new RGBELoader().setDataType(FloatType).loadAsync("limpopo_golf_course_4k.hdr");
+  let envmapTexture = await new RGBELoader().setDataType(FloatType).loadAsync("envmap.hdr");
 
   envmap = pmrem.fromEquirectangular(envmapTexture).texture;
   
-  let sphereMesh = new THREE.Mesh(
-    new THREE.SphereGeometry(5, 10, 10),
-    new THREE.MeshStandardMaterial({ 
+  let sphereMesh = new Mesh(
+    new SphereGeometry(5, 10, 10),
+    new MeshStandardMaterial({ 
       envMap: envmap,
       roughness: 0,
       metalness: 1,
