@@ -19,7 +19,7 @@ import {
 
 import { OrbitControls } from "three/examples/jsm/controls/OrbitControls";
 import { RGBELoader } from "three/examples/jsm/loaders/RGBELoader";
-import { mergeBufferGeometries } from "three/examples/jsm/utils/BufferGeometriesUtils";
+import { mergeBufferGeometries } from "three/examples/jsm/utils/BufferGeometryUtils";
 
 const scene = new Scene();
 scene.background = new Color("#FFEECC");
