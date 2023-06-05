@@ -40,7 +40,7 @@ const controls = new OrbitControls(camera, renderer.domElement);
   
   let sphereMesh = new THREE.Mesh(
     new THREE.SphereGeometry(5, 10, 10),
-    meshBasicMaterial
+    meshMaterial
   );
   scene.add(sphereMesh);  
   
