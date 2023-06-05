@@ -20,6 +20,8 @@ import {
 import { OrbitControls } from "three/examples/jsm/controls/OrbitControls";
 import { RGBELoader } from "three/examples/jsm/loaders/RGBELoader";
 import { mergeBufferGeometries } from "three/examples/jsm/utils/BufferGeometryUtils";
+import SimplexNoise from "https://cdn.skypack.dev/simplex-noise";
+
 
 const scene = new Scene();
 scene.background = new Color("#FFEECC");
@@ -51,17 +53,21 @@ controls.enableDamping = true;
   let pmrem = new PMREMGenerator(renderer);
   //let envmapTexture = await new RGBELoader().setDataType(FloatType).loadAsync("limpopo_golf_course_4k.hdr");
   let envmapTexture = await new RGBELoader().setDataType(FloatType).loadAsync("envmap.hdr");
-
   envmap = pmrem.fromEquirectangular(envmapTexture).texture;
-  
+
+  const simplex = new SimplexNoise();
+
   let mapSize = 5
   for (let i = -1*mapSize; i <= mapSize; ++i) {
     for (let j = -1*mapSize; j <= mapSize; ++j) {
       let position = tileToPosition(i, j);
 
       if (position.length() > mapSize) continue;
+      
+      let noise = (simplex.noise2D(i * 0.1, j * 0.1) + 1) * 0.5;
+      noise = Math.pow(noise, 1.5);
 
-      makeHex(3, position);
+      makeHex(noise * 10, position);
     }
   }
 
