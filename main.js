@@ -23,11 +23,7 @@ renderer.physicallyCorrectLights = true;
 
 document.body.appendChild(renderer.domElement);
 
-let sphereMesh = new THREE.Mesh(
-  new THREE.SphereGeometry(5, 10, 10),
-  new THREE.MeshBasicMaterial({ color: 0xff0000 })
-);
-scene.add(sphereMesh);
+
 
 
 const controls = new OrbitControls(camera, renderer.domElement);
@@ -37,6 +33,15 @@ const controls = new OrbitControls(camera, renderer.domElement);
   let envmapTexture = await new RGBELoader().setDataType(THREE.FloatType).loadAsync("envmap.hdr");
   envmap = pmrem.fromEquirectangular(envmapTexture).texture;
   
+  let sphereMesh = new THREE.Mesh(
+    new THREE.SphereGeometry(5, 10, 10),
+    new THREE.MeshStandardMaterial({ 
+      envmap: envmap,
+      roughness: 0,
+      metalness: 1,
+    })
+  );
+  scene.add(sphereMesh);
   
   renderer.setAnimationLoop(() => {
     controls.update();
