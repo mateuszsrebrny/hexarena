@@ -31,15 +31,16 @@ const controls = new OrbitControls(camera, renderer.domElement);
   let envmapTexture = await new RGBELoader().setDataType(THREE.FloatType).loadAsync("envmap.hdr");
   envmap = pmrem.fromEquirectangular(envmapTexture).texture;
 
-  //new THREE.MeshStandardMaterial({ 
-  //  envmap: envmap,
-  //  roughness: 0,
-  //  metalness: 1,
-  //})
+  let meshMaterial = new THREE.MeshStandardMaterial({ 
+    envmap: envmap,
+    roughness: 0,
+    metalness: 1,
+  });
+  let meshBasicMaterial = new THREE.MeshBasicMaterial({ color: 0xff0000 });
   
   let sphereMesh = new THREE.Mesh(
     new THREE.SphereGeometry(5, 10, 10),
-    new THREE.MeshBasicMaterial({ color: 0xff0000 })
+    meshBasicMaterial
   );
   scene.add(sphereMesh);  
   
