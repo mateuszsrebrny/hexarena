@@ -35,11 +35,12 @@ const controls = new OrbitControls(camera, renderer.domElement);
   
   let sphereMesh = new THREE.Mesh(
     new THREE.SphereGeometry(5, 10, 10),
-    new THREE.MeshStandardMaterial({ 
-      envmap: envmap,
-      roughness: 0,
-      metalness: 1,
-    })
+    //new THREE.MeshStandardMaterial({ 
+    //  envmap: envmap,
+    //  roughness: 0,
+    //  metalness: 1,
+    //})
+    new THREE.MeshBasicMaterial({ color: #ff0000 })
   );
   scene.add(sphereMesh);
   
