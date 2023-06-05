@@ -12,6 +12,9 @@ import {
   Mesh,
   SphereGeometry,
   MeshStandardMaterial,
+  BoxGeometry,
+  CylinderGeometry,
+  Vector2,
 } from "three";
 
 import { OrbitControls } from "three/examples/jsm/controls/OrbitControls";
@@ -51,18 +54,35 @@ controls.enableDamping = true;
 
   envmap = pmrem.fromEquirectangular(envmapTexture).texture;
   
-  let sphereMesh = new Mesh(
-    new SphereGeometry(5, 10, 10),
+  makeHex(3, new Vector2(0, 0));
+
+  let hexagonMesh = new Mesh(
+    hexagonGeometries,
     new MeshStandardMaterial({ 
       envMap: envmap,
-      roughness: 0,
-      metalness: 1,
+      flatShading: true,
     })
   );
-  scene.add(sphereMesh);  
+
+  scene.add(hexagonMesh);  
   
   renderer.setAnimationLoop(() => {
     controls.update();
     renderer.render(scene, camera);
   });
 })();
+
+let hexagonGeometries = new BoxGeometry(0, 0, 0);
+
+function hexGeometry(height, position) {
+  let geo = new CylinderGeometry(1, 1, height, 6, 1, false);
+  geo.translate(position.x, height * 0.5, position.y);
+
+  return geo;
+}
+
+function makeHex(height, position) {
+  let geo = hexGeometry(height, position);
+
+  hexagonGeometries = mergeBufferGeometries([hexagonGeometries, geo]);
+}
