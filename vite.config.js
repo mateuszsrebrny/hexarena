@@ -6,7 +6,8 @@ export default defineConfig({
     rollupOptions: {
       input: {
         main: resolve(__dirname, 'index.html'),
-        nested: resolve(__dirname, 'demo-cube/index.html'),
+        democube: resolve(__dirname, 'demo-cube/index.html'),
+        demosphere: resolve(__dirname, 'demo-sphere/index.html'),
       },
     },
   },
