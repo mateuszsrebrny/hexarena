@@ -1,6 +1,7 @@
 import "./style.css";
 import * as THREE from "three";
 import { OrbitControls } from "three/examples/jsm/controls/OrbitControls.js";
+import { RGBELoader } from "three/examples/jsm/loaders/RGBELoader";
 
 const scene = new THREE.Scene();
 scene.background = new THREE.Color("#FFEECC");
@@ -32,7 +33,7 @@ scene.add(sphereMesh);
 const controls = new OrbitControls(camera, renderer.domElement);
 
 (async function() {
-  let pmrem = THREE.PMREMGenerator(renderer);
+  let pmrem = new THREE.PMREMGenerator(renderer);
   
   
   
