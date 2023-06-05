@@ -77,7 +77,7 @@ controls.enableDamping = true;
 })();
 
 function tileToPosition(tileX, tileY) {
-  return new Vector2((tileX + (tileY % 2) * 0.5), tileY * 1.535);
+  return new Vector2((tileX + (tileY % 2) * 0.5) * 1.77, tileY * 1.535);
 }
 
 let hexagonGeometries = new BoxGeometry(0, 0, 0);
