@@ -31,7 +31,7 @@ const controls = new OrbitControls(camera, renderer.domElement);
 (async function() {
   let pmrem = new THREE.PMREMGenerator(renderer);
   let envmapTexture = await new RGBELoader().setDataType(THREE.FloatType).loadAsync("envmap.hdr");
-  //envmap = pmrem.fromEquirectangular(envmapTexture).texture;
+  envmap = pmrem.fromEquirectangular(envmapTexture).texture;
   
   //let sphereMesh = new THREE.Mesh(
   //  new THREE.SphereGeometry(5, 10, 10),
