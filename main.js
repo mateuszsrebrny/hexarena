@@ -23,13 +23,14 @@ renderer.physicallyCorrectLights = true;
 
 document.body.appendChild(renderer.domElement);
 
-let sphereMesh = new THREE.Mesh(
-    new THREE.SphereGeometry(5, 10, 10),
-    //new THREE.MeshStandardMaterial({ 
+//new THREE.MeshStandardMaterial({ 
     //  envmap: envmap,
     //  roughness: 0,
     //  metalness: 1,
     //})
+
+let sphereMesh = new THREE.Mesh(
+    new THREE.SphereGeometry(5, 10, 10),
     new THREE.MeshBasicMaterial({ color: #ff0000 })
 );
 scene.add(sphereMesh);
