@@ -32,6 +32,10 @@ scene.add(sphereMesh);
 const controls = new OrbitControls(camera, renderer.domElement);
 
 (async function() {
+  let pmrem = THREE.PMREMGenerator(renderer);
+  
+  
+  
   renderer.setAnimationLoop(() => {
     controls.update();
     renderer.render(scene, camera);
