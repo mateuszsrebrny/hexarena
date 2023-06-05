@@ -24,7 +24,7 @@ renderer.physicallyCorrectLights = true;
 document.body.appendChild(renderer.domElement);
 
 
-
+let envmap;
 
 const controls = new OrbitControls(camera, renderer.domElement);
 
