@@ -28,20 +28,20 @@ let envmap;
 
 const controls = new OrbitControls(camera, renderer.domElement);
 
-(async function() {
+(async function() 
   let pmrem = new THREE.PMREMGenerator(renderer);
   let envmapTexture = await new RGBELoader().setDataType(THREE.FloatType).loadAsync("envmap.hdr");
   envmap = pmrem.fromEquirectangular(envmapTexture).texture;
   
-  //let sphereMesh = new THREE.Mesh(
-  //  new THREE.SphereGeometry(5, 10, 10),
-  //  new THREE.MeshStandardMaterial({ 
-  //    envmap: envmap,
-  //    roughness: 0,
-  //    metalness: 1,
-  //  })
-  //);
-  //scene.add(sphereMesh);
+  let sphereMesh = new THREE.Mesh(
+    new THREE.SphereGeometry(5, 10, 10),
+    new THREE.MeshStandardMaterial({ 
+      envmap: envmap,
+      roughness: 0,
+      metalness: 1,
+    })
+  );
+  scene.add(sphereMesh);
   
   renderer.setAnimationLoop(() => {
     controls.update();
