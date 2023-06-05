@@ -28,10 +28,10 @@ const controls = new OrbitControls(camera, renderer.domElement);
 
 (async function() {
   let pmrem = new THREE.PMREMGenerator(renderer);
-  let envmapTexture = await new RGBELoader().setDataType(THREE.FloatType).loadAsync("envmap.hdr");
-  envmap = pmrem.fromEquirectangular(envmapTexture).texture;
+  //let envmapTexture = await new RGBELoader().setDataType(THREE.FloatType).loadAsync("envmap.hdr");
+  let envmapTexture = await new RGBELoader().setDataType(THREE.FloatType).loadAsync("limpopo_golf_course_4k.hdr");
 
-  //let meshBasicMaterial = new THREE.MeshBasicMaterial({ color: 0xff0000 });
+  envmap = pmrem.fromEquirectangular(envmapTexture).texture;
   
   let sphereMesh = new THREE.Mesh(
     new THREE.SphereGeometry(5, 10, 10),
