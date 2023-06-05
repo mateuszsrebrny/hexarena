@@ -54,9 +54,14 @@ controls.enableDamping = true;
 
   envmap = pmrem.fromEquirectangular(envmapTexture).texture;
   
-  for (let i = -5; i <= 5; ++i) {
-    for (let j = -5; j <= 5; ++j) {
-      makeHex(3, tileToPosition(i, j));
+  let mapSize = 5
+  for (let i = -1*mapSize; i <= mapSize; ++i) {
+    for (let j = -1*mapSize; j <= mapSize; ++j) {
+      let position = tileToPosition(i, j);
+
+      if (position.length() > mapSize) continue;
+
+      makeHex(3, position);
     }
   }
 
