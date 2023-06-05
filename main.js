@@ -38,7 +38,7 @@ let envmap;
 
 const controls = new OrbitControls(camera, renderer.domElement);
 
-(async function() 
+(async function() {
   let pmrem = new THREE.PMREMGenerator(renderer);
   let envmapTexture = await new RGBELoader().setDataType(THREE.FloatType).loadAsync("envmap.hdr");
   envmap = pmrem.fromEquirectangular(envmapTexture).texture;
