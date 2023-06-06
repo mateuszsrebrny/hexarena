@@ -99,8 +99,14 @@ controls.enableDamping = true;
     })
   );
 
-  scene.add(hexagonMesh);  
-  
+  let stoneMesh = hexMesh(stoneGeo, textures.stone);
+  let dirtMesh = hexMesh(dirtGeo, textures.dirt);
+  let dirt2Mesh = hexMesh(dirt2Geo, textures.dirt2);
+  let sandMesh = hexMesh(sandGeo, textures.sand);
+  let grassMesh = hexMesh(grassGeo, textures.grass);
+
+  scene.add(stoneMesh, dirtMesh, dirt2Mesh, sandMesh, grassMesh);  
+ 
   renderer.setAnimationLoop(() => {
     controls.update();
     renderer.render(scene, camera);
