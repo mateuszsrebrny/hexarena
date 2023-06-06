@@ -32,7 +32,8 @@ const camera = new PerspectiveCamera(
   0.1,
   1000
 );
-camera.position.set(0, 0, 50);
+camera.position.set(-17, 31, 33);
+//camera.position.set(0, 0, 50);
 
 const renderer = new WebGLRenderer({ antialias: true });
 renderer.setSize(window.innerWidth, window.innerHeight);
