@@ -132,4 +132,16 @@ function makeHex(height, position) {
   let geo = hexGeometry(height, position);
 
   hexagonGeometries = mergeBufferGeometries([hexagonGeometries, geo]);
+
+  if (height > STONE_HEIGHT) {
+    stoneGeo = mergeBufferGeometries([stoneGeo, geo]);
+  } else if (height > DIRT_HEIGHT) {
+    dirtGeo = mergeBufferGeometries([dirtGeo, geo]);
+  } else if (height > GRASS_HEIGHT) {
+    grassGeo = mergeBufferGeometries([grassGeo, geo]);
+  } else if (height > SAND_HEIGHT) {
+    sandGeo = mergeBufferGeometries([sandGeo, geo]);
+  } else if (height > DIRT2_HEIGHT) {
+    dirt2Geo = mergeBufferGeometries([dirt2Geo, geo]);
+  }
 }
