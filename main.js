@@ -150,12 +150,11 @@ function makeHex(height, position) {
 function hexMesh(geo, map) {
 
   let mat = new MeshPhysicalMaterial({
-      envMap: envmap,
-      envMapIntensity: 0.135,
-      flatShading: true,
-      map
-    })
-  );
+    envMap: envmap,
+    envMapIntensity: 0.135,
+    flatShading: true,
+    map
+  });
 
   let mesh = new Mesh(geo, mat);
 
