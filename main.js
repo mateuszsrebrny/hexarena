@@ -1,4 +1,4 @@
-console.print("5");
+console.log("5");
 import "./style.css";
 
 import {
@@ -18,13 +18,13 @@ import {
   Vector2,
 } from "three";
 
-console.print("6");
+console.log("6");
 import { OrbitControls } from "three/examples/jsm/controls/OrbitControls";
 import { RGBELoader } from "three/examples/jsm/loaders/RGBELoader";
 import { mergeBufferGeometries } from "three/examples/jsm/utils/BufferGeometryUtils";
 import SimplexNoise from "https://cdn.skypack.dev/simplex-noise";
 
-console.print("7");
+console.log("7");
 
 const scene = new Scene();
 scene.background = new Color("#FFEECC");
@@ -62,7 +62,7 @@ controls.enableDamping = true;
 
   const simplex = new SimplexNoise();
 
-  console.print("1");
+  console.log("1");
 
   let mapSize = 5
   for (let i = -1*mapSize; i <= mapSize; ++i) {
@@ -71,16 +71,16 @@ controls.enableDamping = true;
 
       if (position.length() > mapSize) continue;
       
-      console.print("3");
+      console.log("3");
       let noise = (simplex.noise2D(i * 0.1, j * 0.1) + 1) * 0.5;
       noise = Math.pow(noise, 1.5);
-      console.print("4");
+      console.log("4");
 
       makeHex(noise * 10, position);
     }
   }
 
-  console.print("2");
+  console.log("2");
   let hexagonMesh = new Mesh(
     hexagonGeometries,
     new MeshStandardMaterial({ 
