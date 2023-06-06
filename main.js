@@ -71,6 +71,8 @@ console.log("9");
   //let noise = simplex.noise2D(1,2);
   //console.log("1: " + noise);
 
+  const noise2D = createNoise2D(Math.random);
+
   let mapSize = 5
   for (let i = -1*mapSize; i <= mapSize; ++i) {
     for (let j = -1*mapSize; j <= mapSize; ++j) {
@@ -79,7 +81,7 @@ console.log("9");
       if (position.length() > mapSize) continue;
       
       console.log("3");
-      let noise = (createNoise2D(i * 0.1, j * 0.1) + 1) * 0.5;
+      let noise = (noise2D(i * 0.1, j * 0.1) + 1) * 0.5;
       noise = Math.pow(noise, 1.5);
       console.log("4");
 
