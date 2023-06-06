@@ -33,7 +33,7 @@ const camera = new PerspectiveCamera(
   0.1,
   1000
 );
-camera.position.set(-17, 31, 33);
+c//amera.position.set(-17, 31, 33);
 //camera.position.set(0, 0, 50);
 
 const renderer = new WebGLRenderer({ antialias: true });
@@ -79,7 +79,6 @@ controls.target.set(0, 0, 0);
   
   const noise2D = createNoise2D(Math.random);
 
-  let MAP_SIZE = 15; 
   for (let i = -1*MAP_SIZE; i <= MAP_SIZE; ++i) {
     for (let j = -1*MAP_SIZE; j <= MAP_SIZE; ++j) {
       let position = tileToPosition(i, j);
