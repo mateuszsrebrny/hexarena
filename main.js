@@ -33,6 +33,7 @@ const camera = new PerspectiveCamera(
   1000
 );
 camera.position.set(-17, 31, 33);
+camera.position.set(0, 0, 50);
 //camera.position.set(0, 0, 50);
 
 const renderer = new WebGLRenderer({ antialias: true });
@@ -58,6 +59,8 @@ controls.enableDamping = true;
 
   const simplex = new SimplexNoise();
 
+  console.print("1");
+
   let mapSize = 5
   for (let i = -1*mapSize; i <= mapSize; ++i) {
     for (let j = -1*mapSize; j <= mapSize; ++j) {
@@ -65,13 +68,16 @@ controls.enableDamping = true;
 
       if (position.length() > mapSize) continue;
       
+      console.print("3");
       let noise = (simplex.noise2D(i * 0.1, j * 0.1) + 1) * 0.5;
       noise = Math.pow(noise, 1.5);
+      console.print("4");
 
       makeHex(noise * 10, position);
     }
   }
 
+  console.print("2");
   let hexagonMesh = new Mesh(
     hexagonGeometries,
     new MeshStandardMaterial({ 
