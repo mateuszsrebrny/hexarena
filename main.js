@@ -66,11 +66,11 @@ controls.enableDamping = true;
   envmap = pmrem.fromEquirectangular(envmapTexture).texture;
 
   let textures = {
-    dirt: await new TextureLoader().loadAsync("dirt.jpg"),
+    dirt: await new TextureLoader().loadAsync("dirt.png"),
     dirt2: await new TextureLoader().loadAsync("dirt2.jpg"),
     grass: await new TextureLoader().loadAsync("grass.jpg"),
     sand: await new TextureLoader().loadAsync("sand.jpg"),
-    stone: await new TextureLoader().loadAsync("stone.jpg"),
+    stone: await new TextureLoader().loadAsync("stone.png"),
     water: await new TextureLoader().loadAsync("water.jpg"),
   };
 
