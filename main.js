@@ -1,3 +1,4 @@
+console.print("5");
 import "./style.css";
 
 import {
@@ -17,11 +18,13 @@ import {
   Vector2,
 } from "three";
 
+console.print("6");
 import { OrbitControls } from "three/examples/jsm/controls/OrbitControls";
 import { RGBELoader } from "three/examples/jsm/loaders/RGBELoader";
 import { mergeBufferGeometries } from "three/examples/jsm/utils/BufferGeometryUtils";
 import SimplexNoise from "https://cdn.skypack.dev/simplex-noise";
 
+console.print("7");
 
 const scene = new Scene();
 scene.background = new Color("#FFEECC");
