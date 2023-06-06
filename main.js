@@ -16,6 +16,7 @@ import {
   CylinderGeometry,
   Vector2,
   TextureLoader,
+  MeshPhysicalMaterial,
 } from "three";
 
 import { OrbitControls } from "three/examples/jsm/controls/OrbitControls";
@@ -144,4 +145,20 @@ function makeHex(height, position) {
   } else if (height > DIRT2_HEIGHT) {
     dirt2Geo = mergeBufferGeometries([dirt2Geo, geo]);
   }
+}
+
+function hexMesh(geo, map) {
+
+  let mat = new MeshPhysicalMaterial({
+      envMap: envmap,
+      envMapIntensity: 0.135,
+      flatShading: true,
+      map
+    })
+  );
+
+  let mesh = new Mesh(geo, mat);
+
+  return mesh;
+
 }
