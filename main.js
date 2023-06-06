@@ -67,14 +67,14 @@ controls.enableDamping = true;
   let envmapTexture = await new RGBELoader().setDataType(FloatType).loadAsync("envmap.hdr");
   envmap = pmrem.fromEquirectangular(envmapTexture).texture;
 
-  //textures = {
-  //  dirt: await new TextureLoader.loadAsync("dirt.jpg"),
-  //  dirt2: await new TextureLoader.loadAsync("dirt2.jpg"),
-  //  grass: await new TextureLoader.loadAsync("grass.jpg"),
-  //  sand: await new TextureLoader.loadAsync("sand.jpg"),
-  //  stone: await new TextureLoader.loadAsync("stone.jpg"),
-  //  water: await new TextureLoader.loadAsync("water.jpg"),
-  //};
+  textures = {
+    dirt: await new TextureLoader.loadAsync("dirt.jpg"),
+    dirt2: await new TextureLoader.loadAsync("dirt2.jpg"),
+    grass: await new TextureLoader.loadAsync("grass.jpg"),
+    sand: await new TextureLoader.loadAsync("sand.jpg"),
+    stone: await new TextureLoader.loadAsync("stone.jpg"),
+    water: await new TextureLoader.loadAsync("water.jpg"),
+  };
 
   
   const noise2D = createNoise2D(Math.random);
