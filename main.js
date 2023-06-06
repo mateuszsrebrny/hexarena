@@ -11,7 +11,6 @@ import {
   FloatType,
   Mesh,
   SphereGeometry,
-  MeshStandardMaterial,
   BoxGeometry,
   CylinderGeometry,
   Vector2,
@@ -91,14 +90,6 @@ controls.enableDamping = true;
     }
   }
 
-  let hexagonMesh = new Mesh(
-    hexagonGeometries,
-    new MeshStandardMaterial({ 
-      envMap: envmap,
-      flatShading: true,
-    })
-  );
-
   let stoneMesh = hexMesh(stoneGeo, textures.stone);
   let dirtMesh = hexMesh(dirtGeo, textures.dirt);
   let dirt2Mesh = hexMesh(dirt2Geo, textures.dirt2);
@@ -123,11 +114,6 @@ let dirt2Geo = new BoxGeometry(0, 0, 0);
 let sandGeo = new BoxGeometry(0, 0, 0);
 let grassGeo = new BoxGeometry(0, 0, 0);
 
-
-
-
-let hexagonGeometries = new BoxGeometry(0, 0, 0);
-
 function hexGeometry(height, position) {
   let geo = new CylinderGeometry(1, 1, height, 6, 1, false);
   geo.translate(position.x, height * 0.5, position.y);
@@ -137,8 +123,6 @@ function hexGeometry(height, position) {
 
 function makeHex(height, position) {
   let geo = hexGeometry(height, position);
-
-  hexagonGeometries = mergeBufferGeometries([hexagonGeometries, geo]);
 
   if (height > STONE_HEIGHT) {
     stoneGeo = mergeBufferGeometries([stoneGeo, geo]);
