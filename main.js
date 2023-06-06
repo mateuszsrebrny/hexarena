@@ -65,7 +65,7 @@ console.log("9");
 
   
   console.log("c");
-  const simplex = new SimplexNoise("hexarena-seed");
+  const simplex = new SimplexNoise();
 
   console.log("1");
 
