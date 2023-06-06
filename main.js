@@ -110,6 +110,15 @@ function tileToPosition(tileX, tileY) {
   return new Vector2((tileX + (tileY % 2) * 0.5) * 1.77, tileY * 1.535);
 }
 
+let stoneGeo = new BoxGeometry(0, 0, 0);
+let dirtGeo = new BoxGeometry(0, 0, 0);
+let dirt2Geo = new BoxGeometry(0, 0, 0);
+let sandGeo = new BoxGeometry(0, 0, 0);
+let grassGeo = new BoxGeometry(0, 0, 0);
+
+
+
+
 let hexagonGeometries = new BoxGeometry(0, 0, 0);
 
 function hexGeometry(height, position) {
