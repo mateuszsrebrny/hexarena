@@ -22,7 +22,7 @@ console.log("6");
 import { OrbitControls } from "three/examples/jsm/controls/OrbitControls";
 import { RGBELoader } from "three/examples/jsm/loaders/RGBELoader";
 import { mergeBufferGeometries } from "three/examples/jsm/utils/BufferGeometryUtils";
-import SimplexNoise from "https://cdn.skypack.dev/simplex-noise";
+import { SimplexNoise } from "three/examples/jsm/math/SimplexNoise";
 
 console.log("7");
 
