@@ -58,8 +58,8 @@ let textures;
 
 const controls = new OrbitControls(camera, renderer.domElement);
 controls.target.set(0, 0, 0);
-//controls.dampingFactor = 0.05;
-//controls.enableDamping = true;
+controls.dampingFactor = 0.05;
+controls.enableDamping = true;
 
 (async function() {
   let pmrem = new PMREMGenerator(renderer);
