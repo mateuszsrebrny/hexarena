@@ -22,7 +22,7 @@ console.log("6");
 import { OrbitControls } from "three/examples/jsm/controls/OrbitControls";
 import { RGBELoader } from "three/examples/jsm/loaders/RGBELoader";
 import { mergeBufferGeometries } from "three/examples/jsm/utils/BufferGeometryUtils";
-import { createNoise2D } from "three/examples/jsm/math/SimplexNoise";
+import { createNoise2D } from "simplex-noise";
 
 console.log("7");
 
