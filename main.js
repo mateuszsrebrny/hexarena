@@ -73,7 +73,7 @@ console.log("9");
 
   const noise2D = createNoise2D(Math.random);
 
-  let mapSize = 5
+  let mapSize = 10
   for (let i = -1*mapSize; i <= mapSize; ++i) {
     for (let j = -1*mapSize; j <= mapSize; ++j) {
       let position = tileToPosition(i, j);
