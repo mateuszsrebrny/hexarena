@@ -73,12 +73,12 @@ console.log("9");
 
   const noise2D = createNoise2D(Math.random);
 
-  let mapSize = 8; 
+  let mapSize = 15; 
   for (let i = -1*mapSize; i <= mapSize; ++i) {
     for (let j = -1*mapSize; j <= mapSize; ++j) {
       let position = tileToPosition(i, j);
 
-      if (position.length() > mapSize) continue;
+      if (position.length() > mapSize + 1) continue;
       
       console.log("3");
       let noise = (noise2D(i * 0.1, j * 0.1) + 1) * 0.5;
