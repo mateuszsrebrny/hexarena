@@ -36,7 +36,6 @@ const camera = new PerspectiveCamera(
   1000
 );
 camera.position.set(-17, 31, 33);
-camera.position.set(0, 0, 50);
 //camera.position.set(0, 0, 50);
 
 const renderer = new WebGLRenderer({ antialias: true });
@@ -49,17 +48,23 @@ document.body.appendChild(renderer.domElement);
 
 let envmap;
 
+console.log("8");
 const controls = new OrbitControls(camera, renderer.domElement);
 controls.target.set(0, 0, 0);
 controls.dampingFactor = 0.05;
 controls.enableDamping = true;
 
+console.log("9");
 (async function() {
+  console.log("a");
   let pmrem = new PMREMGenerator(renderer);
   //let envmapTexture = await new RGBELoader().setDataType(FloatType).loadAsync("limpopo_golf_course_4k.hdr");
   let envmapTexture = await new RGBELoader().setDataType(FloatType).loadAsync("envmap.hdr");
+  console.log("b");
   envmap = pmrem.fromEquirectangular(envmapTexture).texture;
 
+  
+  console.log("c");
   const simplex = new SimplexNoise();
 
   console.log("1");
