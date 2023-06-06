@@ -22,7 +22,7 @@ console.log("6");
 import { OrbitControls } from "three/examples/jsm/controls/OrbitControls";
 import { RGBELoader } from "three/examples/jsm/loaders/RGBELoader";
 import { mergeBufferGeometries } from "three/examples/jsm/utils/BufferGeometryUtils";
-import { SimplexNoise } from "three/examples/jsm/math/SimplexNoise";
+import { createNoise2D } from "three/examples/jsm/math/SimplexNoise";
 
 console.log("7");
 
@@ -65,11 +65,11 @@ console.log("9");
 
   
   console.log("c");
-  const simplex = new SimplexNoise();
+  //const simplex = new SimplexNoise();
 
   console.log("1");
-  let noise = simplex.noise2D(1,2);
-  console.log("1: " + noise);
+  //let noise = simplex.noise2D(1,2);
+  //console.log("1: " + noise);
 
   let mapSize = 5
   for (let i = -1*mapSize; i <= mapSize; ++i) {
@@ -79,7 +79,7 @@ console.log("9");
       if (position.length() > mapSize) continue;
       
       console.log("3");
-      let noise = (simplex.noise2D(i * 0.1, j * 0.1) + 1) * 0.5;
+      let noise = (createNoise2D(i * 0.1, j * 0.1) + 1) * 0.5;
       noise = Math.pow(noise, 1.5);
       console.log("4");
 
