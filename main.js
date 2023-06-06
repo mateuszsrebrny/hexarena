@@ -68,6 +68,8 @@ console.log("9");
   const simplex = new SimplexNoise();
 
   console.log("1");
+  let noise = simplex.noise2D(1,2);
+  console.log("1: " + noise);
 
   let mapSize = 5
   for (let i = -1*mapSize; i <= mapSize; ++i) {
