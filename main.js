@@ -54,14 +54,7 @@ const GRASS_HEIGHT = MAX_HEIGHT * 0.5;
 const SAND_HEIGHT = MAX_HEIGHT * 0.3;
 const DIRT2_HEIGHT = MAX_HEIGHT * 0;
 
-let textures = {
-  dirt: await new TextureLoader.loadAsync("dirt.jpg"),
-  dirt2: await new TextureLoader.loadAsync("dirt2.jpg"),
-  grass: await new TextureLoader.loadAsync("grass.jpg"),
-  sand: await new TextureLoader.loadAsync("sand.jpg"),
-  stone: await new TextureLoader.loadAsync("stone.jpg"),
-  water: await new TextureLoader.loadAsync("water.jpg"),
-};
+let textures;
 
 const controls = new OrbitControls(camera, renderer.domElement);
 controls.target.set(0, 0, 0);
@@ -73,6 +66,15 @@ controls.enableDamping = true;
   //let envmapTexture = await new RGBELoader().setDataType(FloatType).loadAsync("limpopo_golf_course_4k.hdr");
   let envmapTexture = await new RGBELoader().setDataType(FloatType).loadAsync("envmap.hdr");
   envmap = pmrem.fromEquirectangular(envmapTexture).texture;
+
+  textures = {
+    dirt: await new TextureLoader.loadAsync("dirt.jpg"),
+    dirt2: await new TextureLoader.loadAsync("dirt2.jpg"),
+    grass: await new TextureLoader.loadAsync("grass.jpg"),
+    sand: await new TextureLoader.loadAsync("sand.jpg"),
+    stone: await new TextureLoader.loadAsync("stone.jpg"),
+    water: await new TextureLoader.loadAsync("water.jpg"),
+  };
 
   
   const noise2D = createNoise2D(Math.random);
