@@ -15,6 +15,7 @@ import {
   BoxGeometry,
   CylinderGeometry,
   Vector2,
+  TextureLoader,
 } from "three";
 
 import { OrbitControls } from "three/examples/jsm/controls/OrbitControls";
@@ -45,6 +46,23 @@ document.body.appendChild(renderer.domElement);
 
 let envmap;
 
+const MAP_SIZE = 15
+const MAX_HEIGHT = 10;
+const STONE_HEIGHT = MAX_HEIGHT * 0.8;
+const DIRT_HEIGHT = MAX_HEIGHT * 0.7;
+const GRASS_HEIGHT = MAX_HEIGHT * 0.5;
+const SAND_HEIGHT = MAX_HEIGHT * 0.3;
+const DIRT2_HEIGHT = MAX_HEIGHT * 0;
+
+let textures = {
+  dirt: await new TextureLoader.loadAsync("dirt.jpg"),
+  dirt2: await new TextureLoader.loadAsync("dirt2.jpg"),
+  grass: await new TextureLoader.loadAsync("grass.jpg"),
+  sand: await new TextureLoader.loadAsync("sand.jpg"),
+  stone: await new TextureLoader.loadAsync("stone.jpg"),
+  water: await new TextureLoader.loadAsync("water.jpg"),
+};
+
 const controls = new OrbitControls(camera, renderer.domElement);
 controls.target.set(0, 0, 0);
 controls.dampingFactor = 0.05;
@@ -59,12 +77,12 @@ controls.enableDamping = true;
   
   const noise2D = createNoise2D(Math.random);
 
-  let mapSize = 15; 
-  for (let i = -1*mapSize; i <= mapSize; ++i) {
-    for (let j = -1*mapSize; j <= mapSize; ++j) {
+  let MAP_SIZE = 15; 
+  for (let i = -1*MAP_SIZE; i <= MAP_SIZE; ++i) {
+    for (let j = -1*MAP_SIZE; j <= MAP_SIZE; ++j) {
       let position = tileToPosition(i, j);
 
-      if (position.length() > mapSize + 1) continue;
+      if (position.length() > MAP_SIZE + 1) continue;
       
       let noise = (noise2D(i * 0.1, j * 0.1) + 1) * 0.5;
       noise = Math.pow(noise, 1.5);
