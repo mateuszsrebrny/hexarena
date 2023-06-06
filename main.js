@@ -1,4 +1,3 @@
-console.log("5");
 import "./style.css";
 
 import {
@@ -18,13 +17,11 @@ import {
   Vector2,
 } from "three";
 
-console.log("6");
 import { OrbitControls } from "three/examples/jsm/controls/OrbitControls";
 import { RGBELoader } from "three/examples/jsm/loaders/RGBELoader";
 import { mergeBufferGeometries } from "three/examples/jsm/utils/BufferGeometryUtils";
 import { createNoise2D } from "simplex-noise";
 
-console.log("7");
 
 const scene = new Scene();
 scene.background = new Color("#FFEECC");
@@ -48,29 +45,18 @@ document.body.appendChild(renderer.domElement);
 
 let envmap;
 
-console.log("8");
 const controls = new OrbitControls(camera, renderer.domElement);
 controls.target.set(0, 0, 0);
 controls.dampingFactor = 0.05;
 controls.enableDamping = true;
 
-console.log("9");
 (async function() {
-  console.log("a");
   let pmrem = new PMREMGenerator(renderer);
   //let envmapTexture = await new RGBELoader().setDataType(FloatType).loadAsync("limpopo_golf_course_4k.hdr");
   let envmapTexture = await new RGBELoader().setDataType(FloatType).loadAsync("envmap.hdr");
-  console.log("b");
   envmap = pmrem.fromEquirectangular(envmapTexture).texture;
 
   
-  console.log("c");
-  //const simplex = new SimplexNoise();
-
-  console.log("1");
-  //let noise = simplex.noise2D(1,2);
-  //console.log("1: " + noise);
-
   const noise2D = createNoise2D(Math.random);
 
   let mapSize = 15; 
@@ -80,16 +66,13 @@ console.log("9");
 
       if (position.length() > mapSize + 1) continue;
       
-      console.log("3");
       let noise = (noise2D(i * 0.1, j * 0.1) + 1) * 0.5;
       noise = Math.pow(noise, 1.5);
-      console.log("4");
 
       makeHex(noise * 10, position);
     }
   }
 
-  console.log("2");
   let hexagonMesh = new Mesh(
     hexagonGeometries,
     new MeshStandardMaterial({ 
