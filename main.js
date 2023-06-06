@@ -45,14 +45,14 @@ document.body.appendChild(renderer.domElement);
 
 let envmap;
 
-//const MAP_SIZE = 15;
-//const MAX_HEIGHT = 10;
-//const STONE_HEIGHT = MAX_HEIGHT * 0.8;
-//const DIRT_HEIGHT = MAX_HEIGHT * 0.7;
-//const GRASS_HEIGHT = MAX_HEIGHT * 0.5;
-//const SAND_HEIGHT = MAX_HEIGHT * 0.3;
-//const DIRT2_HEIGHT = MAX_HEIGHT * 0;
-//
+const MAP_SIZE = 15;
+const MAX_HEIGHT = 10;
+const STONE_HEIGHT = MAX_HEIGHT * 0.8;
+const DIRT_HEIGHT = MAX_HEIGHT * 0.7;
+const GRASS_HEIGHT = MAX_HEIGHT * 0.5;
+const SAND_HEIGHT = MAX_HEIGHT * 0.3;
+const DIRT2_HEIGHT = MAX_HEIGHT * 0;
+
 //let textures;
 
 const controls = new OrbitControls(camera, renderer.domElement);
@@ -77,8 +77,6 @@ controls.enableDamping = true;
 
   
   const noise2D = createNoise2D(Math.random);
-
-  let MAP_SIZE = 15;
 
   for (let i = -1*MAP_SIZE; i <= MAP_SIZE; ++i) {
     for (let j = -1*MAP_SIZE; j <= MAP_SIZE; ++j) {
