@@ -45,7 +45,7 @@ document.body.appendChild(renderer.domElement);
 
 let envmap;
 
-//const MAP_SIZE = 15;
+const MAP_SIZE = 10;
 const MAX_HEIGHT = 10;
 const STONE_HEIGHT = MAX_HEIGHT * 0.8;
 const DIRT_HEIGHT = MAX_HEIGHT * 0.7;
@@ -77,9 +77,6 @@ controls.enableDamping = true;
 
   
   const noise2D = createNoise2D(Math.random);
-
-
-  let MAP_SIZE = 10;
 
   for (let i = -1*MAP_SIZE; i <= MAP_SIZE; ++i) {
     for (let j = -1*MAP_SIZE; j <= MAP_SIZE; ++j) {
