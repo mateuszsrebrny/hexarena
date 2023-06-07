@@ -16,6 +16,7 @@ import {
   Vector2,
   TextureLoader,
   MeshPhysicalMaterial,
+  PCFSoftShadowMap,
 } from "three";
 
 import { OrbitControls } from "three/examples/jsm/controls/OrbitControls";
@@ -41,7 +42,8 @@ renderer.setSize(window.innerWidth, window.innerHeight);
 renderer.toneMapping = ACESFilmicToneMapping;
 renderer.outputEncoding = sRGBEncoding;
 renderer.physicallyCorrectLights = true;
-
+renderer.shadowMap.enabled = true;
+renderer.shadowMap.type = PCFSoftShadowMap;
 document.body.appendChild(renderer.domElement);
 
 let envmap;
