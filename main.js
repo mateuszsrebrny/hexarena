@@ -17,6 +17,7 @@ import {
   TextureLoader,
   MeshPhysicalMaterial,
   PCFSoftShadowMap,
+  PointLight,
 } from "three";
 
 import { OrbitControls } from "three/examples/jsm/controls/OrbitControls";
@@ -45,6 +46,9 @@ renderer.physicallyCorrectLights = true;
 renderer.shadowMap.enabled = true;
 renderer.shadowMap.type = PCFSoftShadowMap;
 document.body.appendChild(renderer.domElement);
+
+const light = new PointLight(new Color("#FFCB8E").convertSRGBToLinear(), 80, 200);
+light.position.set(10, 20, 10);
 
 let envmap;
 
