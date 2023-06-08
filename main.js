@@ -18,6 +18,7 @@ import {
   MeshPhysicalMaterial,
   PCFSoftShadowMap,
   PointLight,
+  DoubleSide,
 } from "three";
 
 import { OrbitControls } from "three/examples/jsm/controls/OrbitControls";
@@ -130,6 +131,18 @@ controls.enableDamping = true;
   seaMesh.position.set(0, MAX_HEIGHT * 0.1, 0);
   scene.add(seaMesh);
 
+  let mapContainer = new Mesh(
+    new CylinderGeometry(MAP_SIZE + 1.1, MAP_SIZE + 1.1, MAX_HEIGHT * 0.25, 50, 1, true),
+    new MeshPhysicalMaterial({
+      envMap: envmap,
+      map: textures.dirt,
+      envMapIntensity: 0.2,
+      side: DoubleSide,
+    })
+  );
+  mapContainer.receiveShadow = true;
+  mapContainer.position.set(0, MAX_HEIGHT * 0.125, 0);
+  scene.add(mapContainer);
 
   renderer.setAnimationLoop(() => {
     controls.update();
