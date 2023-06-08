@@ -218,6 +218,8 @@ function hexMesh(geo, map) {
   mesh.castShadow = true;
   mesh.receiveShadow = true;
 
+  geo.computeVertexNormals();
+
   return mesh;
 
 }
