@@ -144,6 +144,19 @@ controls.enableDamping = true;
   mapContainer.position.set(0, MAX_HEIGHT * 0.125, 0);
   scene.add(mapContainer);
 
+  let mapFloor = new Mesh(
+    new CylinderGeometry(MAP_SIZE + 2.5, MAP_SIZE + 2.5, MAX_HEIGHT * 0.1, 50),
+    new MeshPhysicalMaterial({
+      envMap: envmap,
+      map: textures.dirt2,
+      envMapIntensity: 0.1,
+      side: DoubleSide,
+    })
+  );
+  mapFloor.receiveShadow = true;
+  mapFloor.position.set(0, -MAX_HEIGHT * 0.05, 0);
+  scene.add(mapFloor);
+
   renderer.setAnimationLoop(() => {
     controls.update();
     renderer.render(scene, camera);
