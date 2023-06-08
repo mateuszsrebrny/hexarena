@@ -161,6 +161,9 @@ function hexMesh(geo, map) {
 
   let mesh = new Mesh(geo, mat);
 
+  mesh.castShadow = true;
+  mesh.receiveShadow = true;
+
   return mesh;
 
 }
