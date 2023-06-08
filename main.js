@@ -93,7 +93,7 @@ controls.enableDamping = true;
     for (let j = -1*MAP_SIZE; j <= MAP_SIZE; ++j) {
       let position = tileToPosition(i, j);
 
-      if (position.length() > MAP_SIZE + 1) continue;
+      if (position.length() > MAP_SIZE) continue;
       
       let noise = (noise2D(i * 0.1, j * 0.1) + 1) * 0.5;
       noise = Math.pow(noise, 1.5);
@@ -111,7 +111,7 @@ controls.enableDamping = true;
   scene.add(stoneMesh, dirtMesh, dirt2Mesh, sandMesh, grassMesh);  
  
   let seaMesh = new Mesh(
-    new CylinderGeometry(MAP_SIZE + 2, MAP_SIZE + 2, MAX_HEIGHT * 0.2, 50),
+    new CylinderGeometry(MAP_SIZE + 1, MAP_SIZE + 1, MAX_HEIGHT * 0.2, 50),
     new MeshPhysicalMaterial({
       envMap: envmap,
       color: new Color("#55aaff").convertSRGBToLinear().multiplyScalar(3),
