@@ -50,7 +50,7 @@ document.body.appendChild(renderer.domElement);
 
 console.log("before light");
 //const light = new PointLight(new Color("#FFCB8E").convertSRGBToLinear().convertSRGBToLinear(), 80, 200);
-const light = new PointLight(0xffffff, 80, 200);
+const light = new PointLight(0xffffff, 1, 100);
 light.position.set(0, 20, 0);
 light.castShadow = true;
 light.shadow.mapSize.width = 512;
