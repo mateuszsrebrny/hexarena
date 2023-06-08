@@ -111,7 +111,7 @@ controls.enableDamping = true;
   scene.add(stoneMesh, dirtMesh, dirt2Mesh, sandMesh, grassMesh);  
  
   let seaMesh = new Mesh(
-    new CylinderGeometry(MAP_SIZE, MAP_SIZE, MAX_HEIGHT * 0.2, 50),
+    new CylinderGeometry(MAP_SIZE + 2, MAP_SIZE + 2, MAX_HEIGHT * 0.2, 50),
     new MeshPhysicalMaterial({
       envMap: envmap,
       color: new Color("#55aaff").convertSRGBToLinear().multiplyScalar(3),
