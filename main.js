@@ -153,7 +153,8 @@ function hexMesh(geo, map) {
 
   let mat = new MeshPhysicalMaterial({
     envMap: envmap,
-    envMapIntensity: 0.135,
+    //envMapIntensity: 0.135,
+    envMapIntensity: 1,
     flatShading: true,
     map
   });
