@@ -16,6 +16,7 @@ import {
   Vector2,
   TextureLoader,
   MeshPhysicalMaterial,
+  MeshLambertMaterial,
   PCFSoftShadowMap,
   PointLight,
   DoubleSide,
@@ -205,7 +206,7 @@ function makeHex(height, position) {
 
 function hexMesh(geo, map) {
 
-  let mat = new MeshPhysicalMaterial({
+  let mat = new MeshLambertMaterial({
     envMap: envmap,
     //envMapIntensity: 0.135,
     envMapIntensity: 1,
