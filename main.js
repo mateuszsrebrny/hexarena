@@ -110,6 +110,27 @@ controls.enableDamping = true;
 
   scene.add(stoneMesh, dirtMesh, dirt2Mesh, sandMesh, grassMesh);  
  
+  let seaMesh = new Mesh(
+    new CylinderGeometry(MAP_SIZE, MAP_SIZE, MAX_HEIGHT * 0.2, 50),
+    new MeshPhysicalMaterial({
+      envMap: envmap,
+      color: new Color("#55aaff").convertSRGBToLinear().multiplyScalar(3),
+      ior: 1.4,
+      transmission: 1,
+      transparent: true,
+      thickness: 1.5,
+      envMapIntensity: 0.2,
+      roughness: 1,
+      metalness: 0.025,
+      roughnessMap: textures.water,
+      metalnessMap: textures.water,
+    })
+  );
+  seaMesh.receiveShadow = true;
+  seaMesh.position.set(0, MAX_HEIGHT * 0.1, 0);
+  scene.add(seaMesh);
+
+
   renderer.setAnimationLoop(() => {
     controls.update();
     renderer.render(scene, camera);
