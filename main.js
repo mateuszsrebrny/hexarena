@@ -20,11 +20,16 @@ import {
   PCFSoftShadowMap,
   PointLight,
   DoubleSide,
-} from "three";
+//} from "three";
 
-import { OrbitControls } from "three/examples/jsm/controls/OrbitControls";
-import { RGBELoader } from "three/examples/jsm/loaders/RGBELoader";
-import { mergeBufferGeometries } from "three/examples/jsm/utils/BufferGeometryUtils";
+} from 'https://cdn.skypack.dev/three@0.137';
+import { OrbitControls } from 'https://cdn.skypack.dev/three-stdlib@2.8.5/controls/OrbitControls';
+import { RGBELoader } from 'https://cdn.skypack.dev/three-stdlib@2.8.5/loaders/RGBELoader';
+import { mergeBufferGeometries } from 'https://cdn.skypack.dev/three-stdlib@2.8.5/utils/BufferGeometryUtils';
+
+//import { OrbitControls } from "three/examples/jsm/controls/OrbitControls";
+//import { RGBELoader } from "three/examples/jsm/loaders/RGBELoader";
+//import { mergeBufferGeometries } from "three/examples/jsm/utils/BufferGeometryUtils";
 import { createNoise2D } from "simplex-noise";
 
 
