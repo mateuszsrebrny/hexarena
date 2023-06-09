@@ -193,12 +193,7 @@ function makeHex(height, position) {
   if (height > STONE_HEIGHT) {
     stoneGeo = mergeBufferGeometries([stoneGeo, geo]);
 
-    if (Math.random() > 0.8) {
-      stoneGeo = mergeBufferGeometries([stoneGeo, stone(height, position)]);
-      if (Math.random() > 0.5) {
-        stoneGeo = mergeBufferGeometries([stoneGeo, stone(height, position)]);
-      }
-    }
+    addStonesRandomly(height, position);
 
   } else if (height > DIRT_HEIGHT) {
     dirtGeo = mergeBufferGeometries([dirtGeo, geo]);
@@ -206,8 +201,10 @@ function makeHex(height, position) {
     grassGeo = mergeBufferGeometries([grassGeo, geo]);
   } else if (height > SAND_HEIGHT) {
     sandGeo = mergeBufferGeometries([sandGeo, geo]);
+    addStonesRandomly(height, position);
   } else if (height > DIRT2_HEIGHT) {
     dirt2Geo = mergeBufferGeometries([dirt2Geo, geo]);
+    addStonesRandomly(height, position);
   }
 }
 
@@ -240,3 +237,11 @@ function stone(height, position) {
   return geo;
 }
 
+function addStonesRandomly(height, position) {
+  if (Math.random() > 0.8) {
+    stoneGeo = mergeBufferGeometries([stoneGeo, stone(height, position)]);
+    if (Math.random() > 0.5) {
+      stoneGeo = mergeBufferGeometries([stoneGeo, stone(height, position)]);
+    }
+  }
+}
