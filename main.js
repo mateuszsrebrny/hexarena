@@ -16,6 +16,7 @@ import {
   Vector2,
   TextureLoader,
   MeshPhysicalMaterial,
+  MeshStandardMaterial,
   PCFSoftShadowMap,
   PointLight,
   DoubleSide,
@@ -164,6 +165,8 @@ controls.enableDamping = true;
   mapFloor.position.set(0, -MAX_HEIGHT * 0.05, 0);
   scene.add(mapFloor);
 
+  clouds();
+
   renderer.setAnimationLoop(() => {
     controls.update();
     renderer.render(scene, camera);
@@ -267,4 +270,39 @@ function addTreeRandomly(height, position) {
   if (Math.random() > 0.8) {
     grassGeo = mergeBufferGeometries([grassGeo, tree(height, position)]);
   }
+}
+
+function clouds() {
+
+  let geo = new SphereGeometry(0, 0, 0);
+
+  let count = Math.random() * 3 + 1;
+
+  for (let i = 0; i < count; ++i) {
+    const puff1 = new SphereGeometry(1.2, 7, 7);
+
+    puff1.translate(-1.85, Math.random() * 0.3, 0);
+  
+    const cloudGeo = mergeBufferGeometries([puff1]);
+
+    cloudGeo.translate(
+      Math.random() * 20 - 10,
+      Math.random() * 7 + 7,
+      Math.random() * 20 - 10
+    );
+    cloudGeo.rotateY(Math.random() * Math.PI * 2);
+
+    geo = mergeBufferGeometries([geo, cloudGeo]);
+  }
+
+  const mesh = new Mesh(
+    geo,
+    new MeshStandardMaterial({
+      envMap: envmap,
+      envMapIntensity: 0.75,
+      flatShading: true,
+    })
+  );
+
+  scene.ads(mesh);
 }
