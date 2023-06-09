@@ -55,9 +55,8 @@ renderer.shadowMap.type = PCFSoftShadowMap;
 document.body.appendChild(renderer.domElement);
 
 console.log("before light");
-//const light = new PointLight(new Color("#FFCB8E").convertSRGBToLinear().convertSRGBToLinear(), 80, 200);
-const light = new PointLight(new Color("#FF0000").convertSRGBToLinear().convertSRGBToLinear(), 80, 200);
-light.position.set(20, 20, 20);
+const light = new PointLight(new Color("#FFCB8E").convertSRGBToLinear().convertSRGBToLinear(), 80, 200);
+light.position.set(10, 20, 10);
 light.castShadow = true;
 light.shadow.mapSize.width = 512;
 light.shadow.mapSize.height = 512;
@@ -221,8 +220,8 @@ function hexMesh(geo, map) {
 
   let mat = new MeshPhysicalMaterial({
     envMap: envmap,
-    //envMapIntensity: 0.135,
-    envMapIntensity: 1,
+    envMapIntensity: 0.135,
+    //envMapIntensity: 1,
     flatShading: true,
     map
   });
