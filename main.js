@@ -199,6 +199,7 @@ function makeHex(height, position) {
     dirtGeo = mergeBufferGeometries([dirtGeo, geo]);
   } else if (height > GRASS_HEIGHT) {
     grassGeo = mergeBufferGeometries([grassGeo, geo]);
+    addTreeRandomly(height, position);
   } else if (height > SAND_HEIGHT) {
     sandGeo = mergeBufferGeometries([sandGeo, geo]);
     addStonesRandomly(height, position);
