@@ -192,6 +192,11 @@ function makeHex(height, position) {
 
   if (height > STONE_HEIGHT) {
     stoneGeo = mergeBufferGeometries([stoneGeo, geo]);
+
+    if (Math.random() > 0.8) {
+      stoneGeo = mergeBufferGeometries([stoneGeo, stone(height, position)]);
+    }
+
   } else if (height > DIRT_HEIGHT) {
     dirtGeo = mergeBufferGeometries([dirtGeo, geo]);
   } else if (height > GRASS_HEIGHT) {
@@ -221,3 +226,14 @@ function hexMesh(geo, map) {
   return mesh;
 
 }
+
+function stone(height, position) {
+  const px = Math.random() * 0.4;
+  const pz = Math.random() * 0.4;
+
+  const geo = new SphereGeometry(Math.random() * 0.3 + 0.1, 7, 7);
+  geo.translate(position.x + px, height, position.y + pz);
+
+  return geo;
+}
+
