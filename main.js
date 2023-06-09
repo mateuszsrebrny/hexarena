@@ -195,6 +195,9 @@ function makeHex(height, position) {
 
     if (Math.random() > 0.8) {
       stoneGeo = mergeBufferGeometries([stoneGeo, stone(height, position)]);
+      if (Math.random() > 0.5) {
+        stoneGeo = mergeBufferGeometries([stoneGeo, stone(height, position)]);
+      }
     }
 
   } else if (height > DIRT_HEIGHT) {
