@@ -22,7 +22,7 @@ import {
   DoubleSide,
 //} from "three";
 
-} from 'https://cdn.skypack.dev/three@0.148';
+} from 'https://cdn.skypack.dev/three@0.140';
 //import { OrbitControls } from 'https://cdn.skypack.dev/three-stdlib@2.8.5/controls/OrbitControls';
 //import { RGBELoader } from 'https://cdn.skypack.dev/three-stdlib@2.8.5/loaders/RGBELoader';
 //import { mergeBufferGeometries } from 'https://cdn.skypack.dev/three-stdlib@2.8.5/utils/BufferGeometryUtils';
