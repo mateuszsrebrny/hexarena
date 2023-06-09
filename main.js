@@ -304,5 +304,5 @@ function clouds() {
     })
   );
 
-  scene.ads(mesh);
+  scene.add(mesh);
 }
