@@ -6,7 +6,6 @@ import {
   PerspectiveCamera,
   WebGLRenderer,
   ACESFilmicToneMapping,
-  sRGBEncoding,
   SRGBColorSpace,
   PMREMGenerator,
   FloatType,
@@ -22,11 +21,6 @@ import {
   PointLight,
   DoubleSide,
 } from "three";
-
-//} from 'https://cdn.skypack.dev/three@0.147';
-//import { OrbitControls } from 'https://cdn.skypack.dev/three-stdlib@2.8.5/controls/OrbitControls';
-//import { RGBELoader } from 'https://cdn.skypack.dev/three-stdlib@2.8.5/loaders/RGBELoader';
-//import { mergeBufferGeometries } from 'https://cdn.skypack.dev/three-stdlib@2.8.5/utils/BufferGeometryUtils';
 
 import { OrbitControls } from "three/examples/jsm/controls/OrbitControls";
 import { RGBELoader } from "three/examples/jsm/loaders/RGBELoader";
@@ -44,12 +38,10 @@ const camera = new PerspectiveCamera(
   1000
 );
 camera.position.set(-17, 31, 33);
-//camera.position.set(0, 0, 50);
 
 const renderer = new WebGLRenderer({ antialias: true });
 renderer.setSize(window.innerWidth, window.innerHeight);
 renderer.toneMapping = ACESFilmicToneMapping;
-//renderer.outputEncoding = sRGBEncoding;
 renderer.outputiColorSpace = SRGBColorSpace;
 renderer.physicallyCorrectLights = true;
 renderer.shadowMap.enabled = true;
@@ -58,7 +50,6 @@ document.body.appendChild(renderer.domElement);
 
 console.log("before light");
 const light = new PointLight(new Color("#FFCB8E"), 80, 200);
-//const light = new PointLight(new Color("#FFCB8E").convertSRGBToLinear().convertSRGBToLinear(), 80, 200);
 light.position.set(10, 20, 10);
 light.castShadow = true;
 light.shadow.mapSize.width = 512;
@@ -90,7 +81,6 @@ controls.enableDamping = true;
 
 (async function() {
   let pmrem = new PMREMGenerator(renderer);
-  //let envmapTexture = await new RGBELoader().setDataType(FloatType).loadAsync("limpopo_golf_course_4k.hdr");
   let envmapTexture = await new RGBELoader().setDataType(FloatType).loadAsync("envmap.hdr");
   envmap = pmrem.fromEquirectangular(envmapTexture).texture;
 
@@ -225,7 +215,6 @@ function hexMesh(geo, map) {
   let mat = new MeshPhysicalMaterial({
     envMap: envmap,
     envMapIntensity: 0.135,
-    //envMapIntensity: 1,
     flatShading: true,
     map
   });
