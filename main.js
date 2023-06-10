@@ -7,6 +7,7 @@ import {
   WebGLRenderer,
   ACESFilmicToneMapping,
   sRGBEncoding,
+  SRGBColorSpace,
   PMREMGenerator,
   FloatType,
   Mesh,
@@ -48,14 +49,16 @@ camera.position.set(-17, 31, 33);
 const renderer = new WebGLRenderer({ antialias: true });
 renderer.setSize(window.innerWidth, window.innerHeight);
 renderer.toneMapping = ACESFilmicToneMapping;
-renderer.outputEncoding = sRGBEncoding;
+//renderer.outputEncoding = sRGBEncoding;
+renderer.outputiColorSpace = SRGBColorSpace;
 renderer.physicallyCorrectLights = true;
 renderer.shadowMap.enabled = true;
 renderer.shadowMap.type = PCFSoftShadowMap;
 document.body.appendChild(renderer.domElement);
 
 console.log("before light");
-const light = new PointLight(new Color("#FFCB8E").convertSRGBToLinear().convertSRGBToLinear(), 80, 200);
+const light = new PointLight(new Color("#FFCB8E"), 80, 200);
+//const light = new PointLight(new Color("#FFCB8E").convertSRGBToLinear().convertSRGBToLinear(), 80, 200);
 light.position.set(10, 20, 10);
 light.castShadow = true;
 light.shadow.mapSize.width = 512;
@@ -128,7 +131,7 @@ controls.enableDamping = true;
     new CylinderGeometry(MAP_SIZE + 1, MAP_SIZE + 1, MAX_HEIGHT * 0.2, 50),
     new MeshPhysicalMaterial({
       envMap: envmap,
-      color: new Color("#55aaff").convertSRGBToLinear().multiplyScalar(3),
+      color: new Color("#55aaff").multiplyScalar(3),
       ior: 1.4,
       transmission: 1,
       transparent: true,
