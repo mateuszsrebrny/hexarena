@@ -20,7 +20,7 @@ import {
   PCFSoftShadowMap,
   PointLight,
   DoubleSide,
-//} from "three";
+} from "three";
 
 //} from 'https://cdn.skypack.dev/three@0.147';
 //import { OrbitControls } from 'https://cdn.skypack.dev/three-stdlib@2.8.5/controls/OrbitControls';
