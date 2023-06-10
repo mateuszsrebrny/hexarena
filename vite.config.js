@@ -8,6 +8,7 @@ export default defineConfig({
         main: resolve(__dirname, 'index.html'),
         democube: resolve(__dirname, 'demo-cube/index.html'),
         demosphere: resolve(__dirname, 'demo-sphere/index.html'),
+        hexmap: resolve(__dirname, 'hex-map/index.html'),
       },
     },
   },
