@@ -48,7 +48,6 @@ renderer.shadowMap.enabled = true;
 renderer.shadowMap.type = PCFSoftShadowMap;
 document.body.appendChild(renderer.domElement);
 
-console.log("before light");
 const light = new PointLight(new Color("#FFCB8E"), 80, 200);
 light.position.set(10, 20, 10);
 light.castShadow = true;
@@ -58,9 +57,6 @@ light.shadow.camera.near = 0.5;
 light.shadow.camera.far = 500;
 light.decay = 1;
 scene.add(light);
-
-console.log("after light");
-console.log(light);
 
 let envmap;
 let textures;
