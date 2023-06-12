@@ -316,7 +316,7 @@ function createMap() {
     for (let j = -1*MAP_SIZE; j <= MAP_SIZE; ++j) {
       let position = tileToPosition(i, j);
 
-      if (position.length() > MAP_SIZE * 1.77) continue;
+      if (position.length() > MAP_SIZE * 1.77 + 1) continue;
       
       let noise = (noise2D(i * 0.1, j * 0.1) + 1) * 0.5;
       noise = Math.pow(noise, 1.5);
