@@ -313,7 +313,7 @@ function createMap() {
     for (let j = -1*MAP_SIZE; j <= MAP_SIZE; ++j) {
       let position = tileToPosition(i, j);
 
-      if (position.length() > MAP_SIZE * 1.77 + 1) continue;
+      if (position.length() > MAP_SIZE * 1.77 + 0.5) continue;
       
       let height = mapHeights[i + MAP_SIZE][j + MAP_SIZE];
 
