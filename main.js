@@ -62,9 +62,8 @@ scene.add(light);
 console.log("after light");
 console.log(light);
 
-
-
 let envmap;
+let textures;
 
 const MAP_SIZE = 10;
 const MAX_HEIGHT = 10;
@@ -84,7 +83,7 @@ controls.enableDamping = true;
   let envmapTexture = await new RGBELoader().setDataType(FloatType).loadAsync("/envmap.hdr");
   envmap = pmrem.fromEquirectangular(envmapTexture).texture;
 
-  let textures = {
+  textures = {
     dirt: await new TextureLoader().loadAsync("/dirt.png"),
     dirt2: await new TextureLoader().loadAsync("/dirt2.jpg"),
     grass: await new TextureLoader().loadAsync("/grass.jpg"),
