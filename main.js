@@ -117,52 +117,7 @@ controls.enableDamping = true;
 
   scene.add(stoneMesh, dirtMesh, dirt2Mesh, sandMesh, grassMesh);  
  
-  let seaMesh = new Mesh(
-    new CylinderGeometry(MAP_SIZE + 1, MAP_SIZE + 1, MAX_HEIGHT * 0.2, 50),
-    new MeshPhysicalMaterial({
-      envMap: envmap,
-      color: new Color("#55aaff").multiplyScalar(3),
-      ior: 1.4,
-      transmission: 1,
-      transparent: true,
-      thickness: 1.5,
-      envMapIntensity: 0.2,
-      roughness: 1,
-      metalness: 0.025,
-      roughnessMap: textures.water,
-      metalnessMap: textures.water,
-    })
-  );
-  seaMesh.receiveShadow = true;
-  seaMesh.position.set(0, MAX_HEIGHT * 0.1, 0);
-  scene.add(seaMesh);
-
-  let mapContainer = new Mesh(
-    new CylinderGeometry(MAP_SIZE + 1.1, MAP_SIZE + 1.1, MAX_HEIGHT * 0.25, 50, 1, true),
-    new MeshPhysicalMaterial({
-      envMap: envmap,
-      map: textures.dirt,
-      envMapIntensity: 0.2,
-      side: DoubleSide,
-    })
-  );
-  mapContainer.receiveShadow = true;
-  mapContainer.position.set(0, MAX_HEIGHT * 0.125, 0);
-  scene.add(mapContainer);
-
-  let mapFloor = new Mesh(
-    new CylinderGeometry(MAP_SIZE + 2.5, MAP_SIZE + 2.5, MAX_HEIGHT * 0.1, 50),
-    new MeshPhysicalMaterial({
-      envMap: envmap,
-      map: textures.dirt2,
-      envMapIntensity: 0.1,
-      side: DoubleSide,
-    })
-  );
-  mapFloor.receiveShadow = true;
-  mapFloor.position.set(0, -MAX_HEIGHT * 0.05, 0);
-  scene.add(mapFloor);
-
+  seaAndRim();
   clouds();
 
   renderer.setAnimationLoop(() => {
@@ -267,6 +222,57 @@ function addTreeRandomly(height, position) {
   if (Math.random() > 0.8) {
     grassGeo = mergeBufferGeometries([grassGeo, tree(height, position)]);
   }
+}
+
+function seaAndRim() {
+
+  let seaMesh = new Mesh(
+    new CylinderGeometry(MAP_SIZE + 1, MAP_SIZE + 1, MAX_HEIGHT * 0.2, 50),
+    new MeshPhysicalMaterial({
+      envMap: envmap,
+      color: new Color("#55aaff").multiplyScalar(3),
+      ior: 1.4,
+      transmission: 1,
+      transparent: true,
+      thickness: 1.5,
+      envMapIntensity: 0.2,
+      roughness: 1,
+      metalness: 0.025,
+      roughnessMap: textures.water,
+      metalnessMap: textures.water,
+    })
+  );
+  seaMesh.receiveShadow = true;
+  seaMesh.position.set(0, MAX_HEIGHT * 0.1, 0);
+  scene.add(seaMesh);
+
+  let mapContainer = new Mesh(
+    new CylinderGeometry(MAP_SIZE + 1.1, MAP_SIZE + 1.1, MAX_HEIGHT * 0.25, 50, 1, true),
+    new MeshPhysicalMaterial({
+      envMap: envmap,
+      map: textures.dirt,
+      envMapIntensity: 0.2,
+      side: DoubleSide,
+    })
+  );
+  mapContainer.receiveShadow = true;
+  mapContainer.position.set(0, MAX_HEIGHT * 0.125, 0);
+  scene.add(mapContainer);
+
+  let mapFloor = new Mesh(
+    new CylinderGeometry(MAP_SIZE + 2.5, MAP_SIZE + 2.5, MAX_HEIGHT * 0.1, 50),
+    new MeshPhysicalMaterial({
+      envMap: envmap,
+      map: textures.dirt2,
+      envMapIntensity: 0.1,
+      side: DoubleSide,
+    })
+  );
+  mapFloor.receiveShadow = true;
+  mapFloor.position.set(0, -MAX_HEIGHT * 0.05, 0);
+  scene.add(mapFloor);
+
+
 }
 
 function clouds() {
