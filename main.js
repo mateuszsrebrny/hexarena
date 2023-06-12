@@ -335,7 +335,7 @@ function createMap() {
     [0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5],
   ];
 
-  MAP_SIZE = 1;
+  MAP_SIZE = 4;
   
   for (let i = -1*MAP_SIZE; i <= MAP_SIZE; ++i) {
     for (let j = -1*MAP_SIZE; j <= MAP_SIZE; ++j) {
@@ -343,7 +343,7 @@ function createMap() {
 
       if (position.length() > MAP_SIZE * 1.77 + 0.5) continue;
       
-      let height = mapHeights1[i + MAP_SIZE][j + MAP_SIZE];
+      let height = mapHeights4[i + MAP_SIZE][j + MAP_SIZE];
 
       makeHex(height * MAX_HEIGHT, position);
     }
