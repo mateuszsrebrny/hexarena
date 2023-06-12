@@ -60,7 +60,7 @@ scene.add(light);
 let envmap;
 let textures;
 
-const MAP_SIZE = 3;
+let  MAP_SIZE = 3;
 const MAX_HEIGHT = 10;
 const STONE_HEIGHT = MAX_HEIGHT * 0.8;
 const DIRT_HEIGHT = MAX_HEIGHT * 0.7;
