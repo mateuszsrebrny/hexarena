@@ -206,9 +206,11 @@ function addTreeRandomly(height, position) {
 }
 
 function seaAndRim() {
+  
+  let seaSize = MAP_SIZE * 1.77
 
   let seaMesh = new Mesh(
-    new CylinderGeometry(MAP_SIZE + 1, MAP_SIZE + 1, MAX_HEIGHT * 0.2, 50),
+    new CylinderGeometry(seaSize + 1, seaSize + 1, MAX_HEIGHT * 0.2, 50),
     new MeshPhysicalMaterial({
       envMap: envmap,
       color: new Color("#55aaff").multiplyScalar(3),
@@ -228,7 +230,7 @@ function seaAndRim() {
   scene.add(seaMesh);
 
   let mapContainer = new Mesh(
-    new CylinderGeometry(MAP_SIZE + 1.1, MAP_SIZE + 1.1, MAX_HEIGHT * 0.25, 50, 1, true),
+    new CylinderGeometry(seaSize + 1.1, seaSize + 1.1, MAX_HEIGHT * 0.25, 50, 1, true),
     new MeshPhysicalMaterial({
       envMap: envmap,
       map: textures.dirt,
@@ -241,7 +243,7 @@ function seaAndRim() {
   scene.add(mapContainer);
 
   let mapFloor = new Mesh(
-    new CylinderGeometry(MAP_SIZE + 2.5, MAP_SIZE + 2.5, MAX_HEIGHT * 0.1, 50),
+    new CylinderGeometry(seaSize + 2.5, seaSize + 2.5, MAX_HEIGHT * 0.1, 50),
     new MeshPhysicalMaterial({
       envMap: envmap,
       map: textures.dirt2,
@@ -314,7 +316,7 @@ function createMap() {
     for (let j = -1*MAP_SIZE; j <= MAP_SIZE; ++j) {
       let position = tileToPosition(i, j);
 
-      if (position.length() > MAP_SIZE) continue;
+      if (position.length() > MAP_SIZE * 1.77) continue;
       
       let noise = (noise2D(i * 0.1, j * 0.1) + 1) * 0.5;
       noise = Math.pow(noise, 1.5);
