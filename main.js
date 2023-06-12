@@ -88,21 +88,7 @@ controls.enableDamping = true;
     water: await new TextureLoader().loadAsync("/water.jpg"),
   };
 
-  
-  const noise2D = createNoise2D(Math.random);
-
-  for (let i = -1*MAP_SIZE; i <= MAP_SIZE; ++i) {
-    for (let j = -1*MAP_SIZE; j <= MAP_SIZE; ++j) {
-      let position = tileToPosition(i, j);
-
-      if (position.length() > MAP_SIZE) continue;
-      
-      let noise = (noise2D(i * 0.1, j * 0.1) + 1) * 0.5;
-      noise = Math.pow(noise, 1.5);
-
-      makeHex(noise * MAX_HEIGHT, position);
-    }
-  }
+  createMap();  
 
   let stoneMesh = hexMesh(stoneGeo, textures.stone);
   let dirtMesh = hexMesh(dirtGeo, textures.dirt);
@@ -307,4 +293,22 @@ function clouds() {
   );
 
   scene.add(mesh);
+}
+
+function createMap() {
+
+  const noise2D = createNoise2D(Math.random);
+
+  for (let i = -1*MAP_SIZE; i <= MAP_SIZE; ++i) {
+    for (let j = -1*MAP_SIZE; j <= MAP_SIZE; ++j) {
+      let position = tileToPosition(i, j);
+
+      if (position.length() > MAP_SIZE) continue;
+      
+      let noise = (noise2D(i * 0.1, j * 0.1) + 1) * 0.5;
+      noise = Math.pow(noise, 1.5);
+
+      makeHex(noise * MAX_HEIGHT, position);
+    }
+  }
 }
