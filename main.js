@@ -318,6 +318,8 @@ function createMap() {
       
       let noise = (noise2D(i * 0.1, j * 0.1) + 1) * 0.5;
       noise = Math.pow(noise, 1.5);
+    
+      noise = mapHeights[i + MAP_SIZE][j + MAP_SIZE];
 
       makeHex(noise * MAX_HEIGHT, position);
     }
