@@ -25,7 +25,6 @@ import {
 import { OrbitControls } from "three/examples/jsm/controls/OrbitControls";
 import { RGBELoader } from "three/examples/jsm/loaders/RGBELoader";
 import { mergeBufferGeometries } from "three/examples/jsm/utils/BufferGeometryUtils";
-import { createNoise2D } from "simplex-noise";
 
 
 const scene = new Scene();
@@ -310,20 +309,15 @@ function createMap() {
     [0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5],
   ];
   
-  const noise2D = createNoise2D(Math.random);
-
   for (let i = -1*MAP_SIZE; i <= MAP_SIZE; ++i) {
     for (let j = -1*MAP_SIZE; j <= MAP_SIZE; ++j) {
       let position = tileToPosition(i, j);
 
       if (position.length() > MAP_SIZE * 1.77 + 1) continue;
       
-      let noise = (noise2D(i * 0.1, j * 0.1) + 1) * 0.5;
-      noise = Math.pow(noise, 1.5);
-    
-      noise = mapHeights[i + MAP_SIZE][j + MAP_SIZE];
+      let height = mapHeights[i + MAP_SIZE][j + MAP_SIZE];
 
-      makeHex(noise * MAX_HEIGHT, position);
+      makeHex(height * MAX_HEIGHT, position);
     }
   }
 }
