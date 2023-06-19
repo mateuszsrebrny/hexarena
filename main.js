@@ -317,7 +317,6 @@ function golem() {
     cloudGeo.rotateY(Math.random() * Math.PI * 2);
 
     geo = mergeBufferGeometries([geo, cloudGeo]);
-  }
 
   const mesh = new Mesh(
     geo,
