@@ -100,6 +100,8 @@ controls.enableDamping = true;
   seaAndRim();
   clouds();
 
+  golem();
+
   renderer.setAnimationLoop(() => {
     controls.update();
     renderer.render(scene, camera);
@@ -295,6 +297,40 @@ function clouds() {
 
   scene.add(mesh);
 }
+
+function golem() {
+
+  let geo = new SphereGeometry(0, 0, 0);
+
+    const puff1 = new SphereGeometry(5, 8, 8);
+    const puff2 = new SphereGeometry(1, 8, 8);
+
+    puff1.translate(-1.85, Math.random() * 0.3, 0);
+    puff2.translate(0, Math.random() * 0.3, 0);
+  
+    const cloudGeo = mergeBufferGeometries([puff1, puff2]);
+
+    cloudGeo.translate(
+      Math.random() * 20 - 10,
+      Math.random() * 7 + 7,
+    );
+    cloudGeo.rotateY(Math.random() * Math.PI * 2);
+
+    geo = mergeBufferGeometries([geo, cloudGeo]);
+  }
+
+  const mesh = new Mesh(
+    geo,
+    new MeshStandardMaterial({
+      envMap: envmap,
+      envMapIntensity: 0.75,
+      flatShading: true,
+    })
+  );
+
+  scene.add(mesh);
+}
+
 
 function createMap() {
 
